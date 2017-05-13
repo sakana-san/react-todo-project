@@ -1,0 +1,20 @@
+=r-sprite-width($sprite)
+	width: nth($sprite, 5)/2
+
+=r-sprite-height($sprite)
+	height: nth($sprite, 6)/2
+　
+=r-sprite-position($sprite)
+	$sprite-offset-x: nth($sprite, 3)/2
+	$sprite-offset-y: nth($sprite, 4)/2
+	background-position: $sprite-offset-x $sprite-offset-y
+
+=r-sprite-size($sprite)
+	background-size: nth($sprite, 7)/2 nth($sprite, 8)/2
+
+=r-sprite($sprite)
+	+sprite-image($sprite)
+	+r-sprite-position($sprite)
+	+r-sprite-width($sprite)
+	+r-sprite-height($sprite)
+	+r-sprite-size($sprite)

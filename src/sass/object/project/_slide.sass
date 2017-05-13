@@ -1,0 +1,59 @@
+.p-slideContent
+	position: relative
+	width: 600px
+	height: 300px
+	margin: 60px auto 0 auto
+	padding-top: 20px
+	background: #000
+	box-sizing: border-box
+	line-height: 0
+	.p-slideFrame
+		position: relative
+		height: 260px
+		overflow: hidden
+
+
+.p-slideIconPosition
+	position: absolute
+	top: 0px
+	width: 60px
+	height: 300px
+	background: #000
+	&:before
+		content: ""
+		+positionCentering
+		cursor: pointer
+
+.p-slideAnimation
+	@extend %clearfix
+	position: absolute
+	top: 0
+	width: 2520px
+	.p-slideAnimationList
+		float: left
+		width: 820px
+		margin-right: 20px
+		cursor: pointer
+
+.p-slidePrev
+	left: 0
+	&:before
+		+sprite($arrow-left)
+	&:hover
+		&:before
+			+sprite($arrow-left_h)
+
+.p-slideNext
+	right: 0
+	&:before
+		+sprite($arrow-right)
+	&:hover
+		&:before
+			+sprite($arrow-right_h)
+
+.p-slideNav
+	margin-top: 4px
+	text-align: center
+	> span
+		margin-right: 6px
+		cursor: pointer

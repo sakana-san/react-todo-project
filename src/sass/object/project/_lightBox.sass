@@ -1,0 +1,36 @@
+.p-lightBoxContent
+	position: relative
+	height: 260px
+	overflow: hidden
+	.p-lightBoxContentGallery
+		@extend %clearfix
+		position: absolute
+		top: 0
+		width: 2520px
+		> li
+			float: left
+			width: 820px
+			cursor: pointer
+
+.p-lightBoxGalleryTitle
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 40px
+	> p
+		line-height: 40px
+		text-align: center
+
+.p-iconPosition
+	&:before
+		content: ""
+		display: block
+		cursor: pointer
+
+.p-lightBoxPrev
+	&:before
+		+r-sprite($arrow-left-light-box)
+
+.p-lightBoxNext
+	&:before
+		+r-sprite($arrow-right-light-box)

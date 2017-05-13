@@ -1,0 +1,31 @@
+@keyframes is-modalOpen
+	from
+		opacity: 0
+	to
+		opacity: 1
+
+
+.p-modal
+	position: fixed
+	top: 0
+	width: 100%
+	background: rgba(0,0,0,0.7)
+	cursor: pointer
+	overflow: hidden
+	z-index: 1
+	&.is-modalOpen
+		height: 100%
+
+.p-modalContent
+	display: none
+	&.is-modalOpen
+		display: block
+		position: fixed
+		width: 630px
+		height: auto
+		padding: 10px
+		background: #fff
+		border-radius: 3px
+		box-sizing: border-box
+		z-index: 3
+		animation: is-modalOpen .2s linear 0s
