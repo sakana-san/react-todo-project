@@ -4,7 +4,6 @@ function Test() {
 
 Test.prototype = {
 	initialize: function() {
-		console.log('a');
 	}
 };
 

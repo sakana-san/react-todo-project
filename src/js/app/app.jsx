@@ -1,18 +1,10 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
+import App from '../react-common/react-basic/app';
 
-class HelloReact extends React.Component {
-  render() {
-    return (
-      <div className="p-panel">
-        Hello React!!
-      </div>
-    );
-  }
-}
-
-
-ReactDom.render(
-  <HelloReact />,
+ReactDOM.render(
+  <App />,
   document.getElementById('root')
 );
+
+React;
