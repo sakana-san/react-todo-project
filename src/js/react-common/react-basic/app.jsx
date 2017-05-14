@@ -12,7 +12,7 @@ export default class extends React.Component {
           <h2 className="p-panel__heading">Simple todo</h2>
           <Index />
           <section className="p-panel__description">
-            <ReactMarkdown  source={input} />
+            <ReactMarkdown source={input} />
           </section>
         </div>
       </div>
