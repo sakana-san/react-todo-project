@@ -1,0 +1,19 @@
+.c-nav
+	margin-left: 20px
+	&__list
+		line-height: 46px
+		display: flex
+	&__item
+		padding-right: 20px
+		> a
+			color: #fff
+			text-decoration: none
+			&:hover
+				color: #ffd900
+	&--first-view
+		@extend .c-nav
+		.c-nav__item > a
+			color: #4a4a4a
+			&:hover
+				opacity: .6
+
