@@ -51,47 +51,8 @@ export default class extends React.Component {
               text: ''
             });
           }}
-
         >クリックしてね</button>
       </div>
     );
   }
 }
-
-
-// export default class Index extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       name: '山田太郎'
-//     };
-//   }
-//
-//   render () {
-//     const name = this.state.name;
-//     return (
-//       <div>
-//         <Name name={name} />
-//         <input
-//           type="text"
-//           value={name}
-//           onChange={e =>{
-//            this.setState({
-//              name: e.target.value
-//            });
-//           }}
-//         />
-//       </div>
-//     );
-//   }
-// }
-//
-// class Name extends React.Component {
-//   render() {
-//     const name = this.props.name;
-//     return (
-//       <h1>Hello! {name}.</h1>
-//
-//     );
-//   }
-// }
