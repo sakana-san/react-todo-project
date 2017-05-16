@@ -35,7 +35,7 @@ export default class extends React.Component {
           }}
         />
 
-        <button className="p-panel__button"
+        <button className="c-button"
           onClick={ () => {
             const prevTodos = this.state.todos;
 
