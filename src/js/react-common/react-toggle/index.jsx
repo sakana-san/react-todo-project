@@ -3,10 +3,14 @@ import React from 'react';
 
 class TodoItem extends React.Component {
   render () {
+    const todo = this.props.todo;
     return(
       <li className="p-panel__item">
-        <button onClick={this.props.onToggle}>toggleボタンです</button>
-        <button onClick={this.props.onDelete}>X</button>
+        <button className="c-button--toggle" onClick={this.props.onToggle}>toggleボタンです</button>
+        <button className="c-button--close" onClick={this.props.onDelete}></button>
+        <span className={todo.done ? 'is-line-through' : ''}>
+          { todo.text }
+        </span>
       </li>
     );
   }
@@ -68,7 +72,7 @@ export default class extends React.Component {
 
     return (
       <div className="p-panel__task">
-        <h3 className="p-panel__title">Toggle</h3>
+        <h3 className="p-panel__heading">Toggle</h3>
         <ul className="p-panel__list">
           {todos.map((todo, i) => {
             return (
@@ -91,15 +95,15 @@ export default class extends React.Component {
           value={ this.state.text}
           onChange={ e => {
             this.setState ({
-              text: e.taget.value
+              text: e.target.value
             });
           }}
         />
 
-        <button className="p-panel__button"
+        <button className="c-button"
           onClick={ () => {
             this.addTodo({
-              text: this.set.text,
+              text: this.state.text,
               done: false
             });
 
