@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 }
 
-class None extends React.Component {
+class FirstView extends React.Component {
   render()  {
     return (
       <div>
@@ -49,7 +49,7 @@ export default class extends React.Component {
     return(
       <Router history={hashHistory}>
         <Route path='/' component={App}>
-          <IndexRoute component={None} />
+          <IndexRoute component={FirstView} />
           <Route path = 'react-basic' component={reactBasic} />
           <Route path = 'react-toggle' component={reactToggle} />
         </Route>
