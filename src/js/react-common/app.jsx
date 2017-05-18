@@ -2,6 +2,8 @@ import React from 'react';
 import {Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
 import reactBasic from './react-basic';
 import reactToggle from './react-toggle';
+import reactCounter from './react-counter';
+import reduxCounter from './redux-counter';
 
 
 class App extends React.Component {
@@ -15,6 +17,8 @@ class App extends React.Component {
               <ul className="c-nav__list">
                 <li className="c-nav__item"><Link to='react-basic'>react basic</Link></li>
                 <li className="c-nav__item"><Link to='react-toggle'>react toggle</Link></li>
+                <li className="c-nav__item"><Link to='react-counter'>react counter</Link></li>
+                <li className="c-nav__item"><Link to='redux-counter'>redux counter</Link></li>
               </ul>
             </nav>
           </div>
@@ -37,6 +41,8 @@ class FirstView extends React.Component {
           <ul className="c-nav__list">
             <li className="c-nav__item"><Link to='react-basic'>react basic</Link></li>
             <li className="c-nav__item"><Link to='react-toggle'>react toggle</Link></li>
+            <li className="c-nav__item"><Link to='react-counter'>react counter</Link></li>
+            <li className="c-nav__item"><Link to='redux-counter'>redux counter</Link></li>
           </ul>
         </nav>
       </div>
@@ -52,6 +58,8 @@ export default class extends React.Component {
           <IndexRoute component={FirstView} />
           <Route path = 'react-basic' component={reactBasic} />
           <Route path = 'react-toggle' component={reactToggle} />
+          <Route path = 'react-counter' component={reactCounter} />
+          <Route path = 'redux-counter' component={reduxCounter} />
         </Route>
       </Router>
     );
