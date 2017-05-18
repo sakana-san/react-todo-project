@@ -1,57 +1,18 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import App from './app';
 
+const input = ' - Stateとして todo text を管理する。 \n - onClick でtodoのリストに追加する。';
 
 export default class extends React.Component {
-  constructor(props)  {
-    super(props);
-    this.state = {
-      text: '',
-      todos: []
-    };
-  }
-  render () {
-    const todos = this.state.todos;
-
+  render() {
     return (
-      <div className="p-panel__task">
-        <h3 className="p-panel__title">Task List</h3>
-        <ul className="p-panel__list">
-          {todos.map((todo, i) => {
-            // 空白なら発火させない
-            if (todo == '') return false;
-            return (
-              <li key={i}>{ todo }</li>
-            );
-          })}
-        </ul>
-
-        <input
-          type="text"
-          value={ this.state.text }
-          onChange={ e => {
-            this.setState({
-              text: e.target.value
-            });
-          }}
-        />
-
-        <button className="p-panel__button"
-          onClick={ () => {
-            const prevTodos = this.state.todos;
-
-            this.setState({
-              todos: [
-                ...prevTodos,
-                this.state.text
-              ]
-            });
-
-            //リロードされたときにvalueを初期化させる
-            this.setState({
-              text: ''
-            });
-          }}
-        >クリックしてね</button>
+      <div>
+        <h2 className="p-panel__heading">Simple todo</h2>
+        <App />
+        <section className="p-panel__description">
+          <ReactMarkdown source={input} />
+        </section>
       </div>
     );
   }
