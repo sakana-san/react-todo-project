@@ -8,7 +8,7 @@ var isProduction = gutil.env.type === 'production';
 var config = {
 	entry: {
 		'app': [
-			'./src/js/app/app.jsx'
+			'./src/js/app/index.jsx'
 		],
 		'common': [
 			'./src/js/app/common.js'
