@@ -8,7 +8,10 @@
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
@@ -22,7 +25,7 @@
         "markdown"
     ],
     "rules": {
-        "no-console":0,
+        "no-console": 0,
         "linebreak-style": [
             "error",
             "unix"
@@ -31,7 +34,14 @@
             "error",
             "single"
         ],
+        "react/jsx-uses-react": 1,
         "react/jsx-uses-vars": 1,
+        "react/display-name": 0,
+        "react/prop-types": [1, {
+            ignore: [
+                children
+            ]
+        }],
         "semi": [
             "error",
             "always"
