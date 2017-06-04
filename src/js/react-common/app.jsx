@@ -7,13 +7,13 @@ import reactCounter from './react-counter';
 import reduxCounter from './redux-counter';
 
 
-class App extends React.Component {
+class Header extends React.Component {
   render() {
     return (
       <div>
         <header className="l-header">
           <div className="l-header__inner">
-            <h2 className="c-heading"><a href="#">React練習一覧</a></h2>
+            <h2 className="c-heading"><NavLink to='/'>React練習一覧</NavLink></h2>
             <nav className="c-nav">
               <ul className="c-nav__list">
                 <li className="c-nav__item"><NavLink to='react-basic'>react basic</NavLink></li>
@@ -24,9 +24,6 @@ class App extends React.Component {
             </nav>
           </div>
         </header>
-        <div className="p-panel">
-          <Route children={ this.props.children } />
-        </div>
       </div>
     );
   }
@@ -55,14 +52,15 @@ export default class extends React.Component {
     return(
       <BrowserRouter history={browserHistory}>
         <div>
-          <Switch>
-            <Route exact path='/' component={App} />
-            <Route exact path='/' component={FirstView} />
-            <Route exact path = '/react-basic'  component={reactBasic} />
-            <Route exact path = '/react-toggle' component={reactToggle} />
-            <Route exact path = '/react-counter' component={reactCounter} />
-            <Route exact path = '/redux-counter' component={reduxCounter} />
-          </Switch>
+            <Header />
+            <Switch>
+              <Route exact path = '/'  component={FirstView} />
+              <Route exact path = '/react-basic'  component={reactBasic} />
+              <Route exact path = '/react-toggle' component={reactToggle} />
+              <Route exact path = '/react-counter' component={reactCounter} />
+              <Route exact path = '/redux-counter' component={reduxCounter} />
+            </Switch>
+
         </div>
       </BrowserRouter>
     );
