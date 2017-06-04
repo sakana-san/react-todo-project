@@ -1,5 +1,6 @@
 import React from 'react';
-import {Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
+import {BrowserRouter as BrowserRouter, browserHistory, IndexRoute, Router, Route, Link } from 'react-router-dom';
+import { Switch } from 'react-router'
 import reactBasic from './react-basic';
 import reactToggle from './react-toggle';
 import reactCounter from './react-counter';
@@ -22,10 +23,15 @@ class App extends React.Component {
               </ul>
             </nav>
           </div>
-
         </header>
         <div className="p-panel">
-          {this.props.children}
+          <Switch>
+            <Route exact path='/' component={FirstView} />
+            <Route path = '/react-basic' component={reactBasic} />
+            <Route path = '/react-toggle' component={reactToggle} />
+            <Route path = '/react-counter' component={reactCounter} />
+            <Route path = '/redux-counter' component={reduxCounter} />
+          </Switch>
         </div>
       </div>
     );
@@ -53,15 +59,13 @@ class FirstView extends React.Component {
 export default class extends React.Component {
   render () {
     return(
-      <Router history={hashHistory}>
-        <Route path='/' component={App}>
-          <IndexRoute component={FirstView} />
-          <Route path = 'react-basic' component={reactBasic} />
-          <Route path = 'react-toggle' component={reactToggle} />
-          <Route path = 'react-counter' component={reactCounter} />
-          <Route path = 'redux-counter' component={reduxCounter} />
-        </Route>
-      </Router>
+      <BrowserRouter history={browserHistory}>
+        <div>
+            <Route exact path='/' component={App} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
+
+{/*<IndexRoute component={FirstView} />*/}
