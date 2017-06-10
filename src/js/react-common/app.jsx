@@ -53,13 +53,15 @@ export default class extends React.Component {
       <BrowserRouter history={browserHistory}>
         <div>
             <Header />
-            <Switch>
-              <Route exact path = '/'  component={FirstView} />
-              <Route exact path = '/react-basic'  component={reactBasic} />
-              <Route exact path = '/react-toggle' component={reactToggle} />
-              <Route exact path = '/react-counter' component={reactCounter} />
-              <Route exact path = '/redux-counter' component={reduxCounter} />
-            </Switch>
+            <div className="p-panel">
+              <Switch>
+                <Route exact path = '/' component={FirstView} />
+                <Route exact path = '/react-basic'  component={reactBasic} />
+                <Route exact path = '/react-toggle' component={reactToggle} />
+                <Route exact path = '/react-counter' component={reactCounter} />
+                <Route exact path = '/redux-counter' component={reduxCounter} />
+              </Switch>
+            </div>
 
         </div>
       </BrowserRouter>
