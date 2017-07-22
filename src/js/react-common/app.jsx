@@ -5,6 +5,7 @@ import reactBasic from './react-basic';
 import reactToggle from './react-toggle';
 import reactCounter from './react-counter';
 import reduxCounter from './redux-counter';
+import reactReduxCounter from './react-redux-counter';
 
 
 class Header extends React.Component {
@@ -20,6 +21,7 @@ class Header extends React.Component {
                 <li className="c-nav__item"><NavLink to='react-toggle'>react toggle</NavLink></li>
                 <li className="c-nav__item"><NavLink to='react-counter'>react counter</NavLink></li>
                 <li className="c-nav__item"><NavLink to='redux-counter'>redux counter</NavLink></li>
+                <li className="c-nav__item"><NavLink to='react-redux-counter'>react redux counter</NavLink></li>
               </ul>
             </nav>
           </div>
@@ -40,6 +42,7 @@ class FirstView extends React.Component {
             <li className="c-nav__item"><NavLink to='/react-toggle'>react toggle</NavLink></li>
             <li className="c-nav__item"><NavLink to='/react-counter'>react counter</NavLink></li>
             <li className="c-nav__item"><NavLink to='/redux-counter'>redux counter</NavLink></li>
+            <li className="c-nav__item"><NavLink to='/react-redux-counter'>react redux counter</NavLink></li>
           </ul>
         </nav>
       </div>
@@ -60,6 +63,7 @@ export default class extends React.Component {
                 <Route exact path = '/react-toggle' component={reactToggle} />
                 <Route exact path = '/react-counter' component={reactCounter} />
                 <Route exact path = '/redux-counter' component={reduxCounter} />
+                <Route exact path = '/react-redux-counter' component={reactReduxCounter} />
               </Switch>
             </div>
 
