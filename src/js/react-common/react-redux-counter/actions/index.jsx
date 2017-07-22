@@ -1,6 +1,6 @@
 export const counter = (behavior) => {
   return {
-    type: ' COUNTER',
+    type: 'COUNTER',
     behavior
   };
 };
