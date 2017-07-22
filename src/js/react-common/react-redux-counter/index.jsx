@@ -1,19 +1,21 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import counterApp from './reducers';
 import App from './app';
 
-const input = '- react-reduxでカウントダウン';
+let store = createStore(counterApp);
 
-export default class extends React.Component {
+export default class extends Component {
   render () {
     return (
       <div>
-          <h2 className="p-panel__heading">CountDown</h2>
+        <p>テスト</p>
+        <Provider store={store}>
           <App />
-          <section className="p-panel__description">
-            <ReactMarkdown source={input} />
-          </section>
+        </Provider>
       </div>
+
     );
   }
 }

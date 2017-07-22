@@ -63,7 +63,7 @@ export default class extends React.Component {
                 <Route exact path = '/react-toggle' component={reactToggle} />
                 <Route exact path = '/react-counter' component={reactCounter} />
                 <Route exact path = '/redux-counter' component={reduxCounter} />
-                <Route exact path = '/redux-counter' component={reactReduxCounter} />
+                <Route exact path = '/react-redux-counter' component={reactReduxCounter} />
               </Switch>
             </div>
 
