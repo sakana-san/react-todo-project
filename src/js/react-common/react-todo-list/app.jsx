@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class TodoItem extends React.Component {
   render () {
@@ -16,15 +17,6 @@ class TodoItem extends React.Component {
           onClick={this.props.onDelete}>削除
         </button>
       </li>
-
-    );
-  }
-}
-
-class StorageItem extends React.Component {
-  render () {
-    return (
-      <li className="p-result__item is-storage"></li>
     );
   }
 }
@@ -36,8 +28,6 @@ export default class extends React.Component {
       id: 0,
       text: '',
       todos: [
-      ],
-      storageTodos: [
       ]
     };
     this.addTodo = this.addTodo.bind(this);
@@ -82,32 +72,20 @@ export default class extends React.Component {
     });
   }
   setStorageTodo(todo) {
-    const prevStorageTodos = this.state.storageTodos;
-    console.log('prevStorageTodos', todo);
-    this.setState({
-      storageTodos: [
-        ...prevStorageTodos,
-        todo
-      ]
-    })
-    let set = [{text: prevStorageTodos[0].text}];
-    set.push(prevStorageTodos[0].text);
+    let set = [{text: todo.text}];
+    set.push(todo.text);
     localStorage.setItem('KeyData', JSON.stringify(set));
-    this.getStorageTodo();
   }
   getStorageTodo() {
+    let $el = $('body');
     let getData = JSON.parse(localStorage.getItem('KeyData'));
-    let createDom = document.createElement('p');
-    createDom.innerHTML = getData[0].text;
-    document.querySelector('.is-storage').appendChild(createDom);
     this.setState({
       isStorageActive: getData[0].length !== 1 ? true : false
     });
-
+    $el.find('.is-storage').append('<li class="p-result__item"><p>' + getData[0].text + '</p></li>');
   }
   render () {
     const todos = this.state.todos;
-    const storageTodos = this.state.storageTodos;
     return (
       <div>
         <h2>TodoList</h2>
@@ -155,21 +133,7 @@ export default class extends React.Component {
           </ul>
         </div>
         <div className={`p-result ${this.state.isStorageActive ? 'is-active' : ''}`}>
-          <ul className="p-result__list">
-            {storageTodos.map((todo, i) => {
-              if (todo.text === '') return;
-              return (
-                <StorageItem
-                  todo={todo}
-                  key={i}
-                  onSetStorage={ () => {
-                    this.setStorageTodo();
-                    this.getStorageTodo();
-                  }}
-                />
-              );
-            })}
-          </ul>
+          <ul className="p-result__list is-storage"></ul>
         </div>
       </div>
     );
