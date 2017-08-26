@@ -7,7 +7,7 @@ class TodoItem extends React.Component {
       <li className="p-result__item">
         <span onClick={this.props.onToggle}>{todo.text}</span>
         <button
-          className={`c-button`}
+          className=" c-button"
           onClick={this.props.onSetStorage}
         >保存
         </button>
@@ -23,11 +23,8 @@ class TodoItem extends React.Component {
 
 class StorageItem extends React.Component {
   render () {
-    const todo = this.props.todo;
     return (
-      <li className="p-result__item">
-        <span>{todo.storage}</span>
-      </li>
+      <li className="p-result__item is-storage"></li>
     );
   }
 }
@@ -39,6 +36,8 @@ export default class extends React.Component {
       id: 0,
       text: '',
       todos: [
+      ],
+      storageTodos: [
       ]
     };
     this.addTodo = this.addTodo.bind(this);
@@ -78,38 +77,37 @@ export default class extends React.Component {
   deleteTodo(index) {
     const prevTodos = this.state.todos;
     this.setState({
-      isActive: prevTodos.length === 1 ? false : true,
-      todos: prevTodos.filter((todo, i) => index != i)
+      todos: prevTodos.filter((todo, i) => index != i),
+      isActive: prevTodos.length !== 1 ? true : false
     });
   }
-  setStorageTodo(index) {
-    const prevTodos = this.state.todos;
-    prevTodos.map((todo) => {
-      if (index === i) {
-        let set = [{id: todo.id, text: todo.text}];
-        set.push(todo.text);
-        localStorage.setItem('KeyData', JSON.stringify(set));
-      }
-    });
+  setStorageTodo(todo) {
+    const prevStorageTodos = this.state.storageTodos;
+    console.log('prevStorageTodos', todo);
+    this.setState({
+      storageTodos: [
+        ...prevStorageTodos,
+        todo
+      ]
+    })
+    let set = [{text: prevStorageTodos[0].text}];
+    set.push(prevStorageTodos[0].text);
+    localStorage.setItem('KeyData', JSON.stringify(set));
     this.getStorageTodo();
   }
   getStorageTodo() {
-    const prevTodos = this.state.todos;
     let getData = JSON.parse(localStorage.getItem('KeyData'));
-    let getDataText = document.createTextNode(getData[0].text);
+    let createDom = document.createElement('p');
+    createDom.innerHTML = getData[0].text;
+    document.querySelector('.is-storage').appendChild(createDom);
     this.setState({
-      todos: prevTodos.map((todo, i) => {
-        return {
-          id: todo.id,
-          text: todo.text,
-          done: !todo.done,
-          storage: getDataText.data
-        }
-      })
+      isStorageActive: getData[0].length !== 1 ? true : false
     });
+
   }
   render () {
     const todos = this.state.todos;
+    const storageTodos = this.state.storageTodos;
     return (
       <div>
         <h2>TodoList</h2>
@@ -143,7 +141,9 @@ export default class extends React.Component {
                     this.toggleTodo(i);
                   }}
                   onSetStorage={ () => {
-                    this.setStorageTodo(i);
+                    this.setStorageTodo({
+                      text: this.state.text,
+                    });
                     this.getStorageTodo();
                   }}
                   onDelete={ () => {
@@ -154,19 +154,18 @@ export default class extends React.Component {
             })}
           </ul>
         </div>
-        <div className={`p-result ${this.state.isActive ? 'is-active' : ''}`}>
+        <div className={`p-result ${this.state.isStorageActive ? 'is-active' : ''}`}>
           <ul className="p-result__list">
-            {todos.map((todo, i) => {
+            {storageTodos.map((todo, i) => {
               if (todo.text === '') return;
               return (
                 <StorageItem
                   todo={todo}
                   key={i}
                   onSetStorage={ () => {
-                    this.setStorageTodo(i);
+                    this.setStorageTodo();
                     this.getStorageTodo();
                   }}
-                  //onSetStorage={this.props.onSetStorage}
                 />
               );
             })}
