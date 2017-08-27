@@ -120,7 +120,7 @@ export default class extends React.Component {
                   }}
                   onSetStorage={ () => {
                     this.setStorageTodo({
-                      text: this.state.text,
+                      text: this.state.text
                     });
                     this.getStorageTodo();
                   }}
